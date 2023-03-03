@@ -1,0 +1,1 @@
+subfinder -d example.com -silent -all | assetfinder --subs-only | httpx -silent -o output_httpx.txt; for i in $(cat output_httpx.txt); do DOMAIN=$(echo $i | unfurl format %d); ffuf -u $i/FUZZ -w wordlistforffuf.txt;done
